@@ -40,4 +40,36 @@ public class RulesApplicationRunnerTests
       Assert.Equal(expected[i].RulesApplied, actual[i].RulesApplied);
     }
   }
+
+  [Fact]
+  public void Run_WordsFromIgnoreList_OnlyDefaultRuleIsApplied()
+  {
+    List<Word> words =
+    [
+      new("de"),
+      new("da"),
+      new("neden"),
+      new("birden")
+    ];
+
+    List<IRule> rules = RuleFactory.CreateAll();
+
+    var actual = RulesApplicationRunner.Run(rules, words).ToList();
+
+    List<Word> expected =
+    [
+      new Word("de", "de", ["DefaultRule"]),
+      new Word("da", "da", ["DefaultRule"]),
+      new Word("neden", "neden", ["DefaultRule"]),
+      new Word("birden", "birden", ["DefaultRule"]),
+    ];
+
+    Assert.Equal(words.Count, actual.Count);
+    for (var i = 0; i < expected.Count; i++)
+    {
+      Assert.Equal(expected[i].Original, actual[i].Original);
+      Assert.Equal(expected[i].Root, actual[i].Root);
+      Assert.Equal(expected[i].RulesApplied, actual[i].RulesApplied);
+    }
+  }
 }
