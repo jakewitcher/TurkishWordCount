@@ -9,8 +9,11 @@ public static class RuleFactory
   private readonly static Dictionary<SuffixType, Suffix> _suffixes = new()
   {
     { SuffixType.AblativeCase, new Suffix(SuffixType.AblativeCase, ["dan", "den"])},
+    { SuffixType.InstrumentalCase, new Suffix(SuffixType.InstrumentalCase, ["la", "le"])},
     { SuffixType.LocativeCase, new Suffix(SuffixType.LocativeCase, ["da", "de"])},
-    { SuffixType.PluralNoun, new Suffix(SuffixType.PluralNoun, ["lar", "ler"])}
+    { SuffixType.PluralNoun, new Suffix(SuffixType.PluralNoun, ["lar", "ler"])},
+    { SuffixType.PluralNounAccusitiveCase, new Suffix(SuffixType.PluralNounAccusitiveCase, ["ları", "leri"])},
+    { SuffixType.PluralNounGenetiveCase, new Suffix(SuffixType.PluralNounGenetiveCase, ["ların", "lerin"])}
   };
 
   public static List<IRule> CreateAll()

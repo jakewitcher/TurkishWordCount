@@ -12,6 +12,7 @@ public static class RulesApplicationRunner
     "birden",
     "de",
     "da",
+    "ile",
     "neden",
   ];
 
