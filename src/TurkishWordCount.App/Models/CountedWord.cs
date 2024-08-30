@@ -4,7 +4,7 @@ public record CountedWord
 {
   public int Count { get; private set; }
   private readonly string _root;
-  private readonly IList<string> _words;
+  private readonly List<string> _words;
 
   public CountedWord(string root)
   {

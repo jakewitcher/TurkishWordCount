@@ -1,3 +1,4 @@
+using TurkishWordCount.App.Enums;
 using TurkishWordCount.App.Models;
 using TurkishWordCount.App.Rules;
 using TurkishWordCount.App.Rules.Interfaces;
@@ -14,24 +15,21 @@ public class RulesApplicationRunnerTests
       new("insanlar"),
       new("okulda"),
       new("dağlarda"),
+      new("evden"),
       new("evet")
     ];
 
-    List<IRule> rules =
-    [
-      new LocativeCaseRule(),
-      new PluralNounRule(),
-      new DefaultRule()
-    ];
+    List<IRule> rules = RuleFactory.CreateAll();
 
     var actual = RulesApplicationRunner.Run(rules, words).ToList();
 
     List<Word> expected =
     [
-      new Word("insanlar", "insan", [nameof(PluralNounRule)]),
-      new Word("okulda", "okul", [nameof(LocativeCaseRule)]),
-      new Word("dağlarda", "dağ", [nameof(LocativeCaseRule), nameof(PluralNounRule)]),
-      new Word("evet", "evet", [nameof(DefaultRule)])
+      new Word("insanlar", "insan", [$"{SuffixType.PluralNoun}Rule"]),
+      new Word("okulda", "okul", [$"{SuffixType.LocativeCase}Rule"]),
+      new Word("dağlarda", "dağ", [$"{SuffixType.LocativeCase}Rule", $"{SuffixType.PluralNoun}Rule"]),
+      new Word("evden", "ev", [$"{SuffixType.AblativeCase}Rule"]),
+      new Word("evet", "evet", ["DefaultRule"])
     ];
 
     Assert.Equal(words.Count, actual.Count);

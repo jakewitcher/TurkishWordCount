@@ -4,7 +4,7 @@ public record Word
 {
   public string Original { get; }
   public string? Root { get; private set; }
-  public IList<string> RulesApplied { get; }
+  public List<string> RulesApplied { get; }
 
   public Word(string original)
   {
@@ -12,7 +12,7 @@ public record Word
     RulesApplied = [];
   }
 
-  public Word(string original, string modified, IList<string> rulesApplied)
+  public Word(string original, string modified, List<string> rulesApplied)
   {
     if (rulesApplied.Count is 0)
       throw new ArgumentException($"{nameof(rulesApplied)} cannot be empty");

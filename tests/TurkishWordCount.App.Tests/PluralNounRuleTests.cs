@@ -1,3 +1,4 @@
+using TurkishWordCount.App.Enums;
 using TurkishWordCount.App.Models;
 using TurkishWordCount.App.Rules;
 using TurkishWordCount.App.Rules.Interfaces;
@@ -10,7 +11,7 @@ public class PluralNounRuleTests
 
   public PluralNounRuleTests()
   {
-    _rule = new PluralNounRule();
+    _rule = RuleFactory.CreateSuffixRule(SuffixType.PluralNoun);
   }
 
   [Fact]
@@ -23,7 +24,7 @@ public class PluralNounRuleTests
     Assert.Equal(before.Original, after.Original);
     Assert.Equal("insan", after.Root);
     Assert.Single(after.RulesApplied);
-    Assert.Equal(nameof(PluralNounRule), after.RulesApplied[0]);
+    Assert.Equal($"{SuffixType.PluralNoun}Rule", after.RulesApplied[0]);
   }
 
   [Fact]

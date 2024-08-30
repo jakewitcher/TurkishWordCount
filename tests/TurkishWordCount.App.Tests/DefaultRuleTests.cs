@@ -1,3 +1,4 @@
+using TurkishWordCount.App.Enums;
 using TurkishWordCount.App.Models;
 using TurkishWordCount.App.Rules;
 using TurkishWordCount.App.Rules.Interfaces;
@@ -10,7 +11,7 @@ public class DefaultRuleTests
 
   public DefaultRuleTests()
   {
-    _rule = new DefaultRule();
+    _rule = RuleFactory.CreateDefaultRule();
   }
 
   [Fact]
@@ -29,13 +30,13 @@ public class DefaultRuleTests
   [Fact]
   public void Apply_WordHasRulesApplied_DefaultRulesIsNotApplied()
   {
-    var before = new Word("insanlar", "insan", [nameof(PluralNounRule)]);
+    var before = new Word("insanlar", "insan", [$"{SuffixType.PluralNoun}Rule"]);
 
     var after = _rule.Apply(before);
 
     Assert.Equal(before.Original, after.Original);
     Assert.Equal(before.Root, after.Root);
     Assert.Single(after.RulesApplied);
-    Assert.Equal(nameof(PluralNounRule), after.RulesApplied[0]);
+    Assert.Equal($"{SuffixType.PluralNoun}Rule", after.RulesApplied[0]);
   }
 }
