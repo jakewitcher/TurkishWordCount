@@ -21,7 +21,18 @@ public class StringExtensionsTests
         var input = "Merhaba\ndünya\r\n";
 
         var actual = input.Clean();
-        var expected = "merhabadünya";
+        var expected = "merhaba dünya ";
+
+        Assert.Equal(expected, actual);
+    }
+
+    [Fact]
+    public void Clean_IncludesNumbers_IsStripped()
+    {
+        var input = "6Merha45ba1";
+
+        var actual = input.Clean();
+        var expected = "merhaba";
 
         Assert.Equal(expected, actual);
     }
@@ -32,7 +43,7 @@ public class StringExtensionsTests
         var input = "\tMerhaba dünya";
 
         var actual = input.Clean();
-        var expected = "merhaba dünya";
+        var expected = " merhaba dünya";
 
         Assert.Equal(expected, actual);
     }

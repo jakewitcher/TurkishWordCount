@@ -12,9 +12,11 @@ public static class StringExtensions
     var sb = new StringBuilder();
     var spaces = 0;
 
-    foreach (var c in s)
+    for (var i = 0; i < s.Length; i++)
     {
-      if (_whitespace.Contains(c) || char.IsPunctuation(c)) continue;
+      var c = s[i];
+      if (char.IsPunctuation(c) || char.IsNumber(c)) continue;
+      if (_whitespace.Contains(c)) c = _space;
 
       spaces = c.Equals(_space) ? spaces += 1 : 0;
       if (spaces > 1) continue;
