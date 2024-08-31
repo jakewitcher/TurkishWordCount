@@ -11,9 +11,7 @@ public static class RuleFactory
     { SuffixType.AblativeCase, new Suffix(SuffixType.AblativeCase, ["dan", "den"])},
     { SuffixType.InstrumentalCase, new Suffix(SuffixType.InstrumentalCase, ["la", "le"])},
     { SuffixType.LocativeCase, new Suffix(SuffixType.LocativeCase, ["da", "de"])},
-    { SuffixType.PluralNoun, new Suffix(SuffixType.PluralNoun, ["lar", "ler"])},
-    { SuffixType.PluralNounAccusitiveCase, new Suffix(SuffixType.PluralNounAccusitiveCase, ["ları", "leri"])},
-    { SuffixType.PluralNounGenetiveCase, new Suffix(SuffixType.PluralNounGenetiveCase, ["ların", "lerin"])}
+    { SuffixType.PluralNoun, new Suffix(SuffixType.PluralNoun, ["lar", "ler", "ları", "leri", "ların", "lerin"])}
   };
 
   public static List<IRule> CreateAll()

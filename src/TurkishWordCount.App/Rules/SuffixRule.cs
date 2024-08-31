@@ -7,7 +7,6 @@ public class SuffixRule : IRule
 {
   private readonly string _ruleName;
   private readonly List<string> _suffixes;
-  private readonly int _endingLength;
 
   public SuffixRule(string ruleName, List<string> suffixes)
   {
@@ -15,26 +14,29 @@ public class SuffixRule : IRule
 
     _ruleName = ruleName;
     _suffixes = suffixes;
-    _endingLength = _suffixes[0].Length;
   }
 
   public Word Apply(Word word)
   {
-    if (word.TestRule(EndsWithSuffix))
+    foreach (var suffix in _suffixes)
     {
-      word.ApplyRule(_ruleName, ToRoot);
+      if (word.TestRule(EndsWithSuffix(suffix)))
+      {
+        word.ApplyRule(_ruleName, ToRoot(suffix));
+        return word;
+      }
     }
 
     return word;
   }
 
-  private bool EndsWithSuffix(string word)
+  private static Func<string, bool> EndsWithSuffix(string suffix)
   {
-    return _suffixes.Any(word.EndsWith);
+    return w => w.EndsWith(suffix);
   }
 
-  private string ToRoot(string word)
+  private static Func<string, string> ToRoot(string suffix)
   {
-    return word.Remove(word.Length - _endingLength);
+    return w => w.Remove(w.Length - suffix.Length);
   }
 }

@@ -5,7 +5,5 @@ public enum SuffixType
   AblativeCase,
   InstrumentalCase,
   LocativeCase,
-  PluralNoun,
-  PluralNounAccusitiveCase,
-  PluralNounGenetiveCase,
+  PluralNoun
 }
