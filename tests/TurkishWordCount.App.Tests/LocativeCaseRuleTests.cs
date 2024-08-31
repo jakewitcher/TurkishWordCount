@@ -10,13 +10,13 @@ public class LocativeCaseRuleTests
 {
   public static List<object[]> BackVowelTestCases =>
 [
-  [new RuleTestCase("okulda", "okul", $"{SuffixType.LocativeCase}Rule")],
+  [new RuleTestCase("okulda", "okul", $"{SuffixType.LocativeCaseNoun}Rule")],
     [new RuleTestCase("okuldan", null, new List<string>())]
 ];
 
   public static List<object[]> FrontVowelTestCases =>
   [
-    [new RuleTestCase("kilisede", "kilise", $"{SuffixType.LocativeCase}Rule")],
+    [new RuleTestCase("kilisede", "kilise", $"{SuffixType.LocativeCaseNoun}Rule")],
     [new RuleTestCase("kiliseden", null, new List<string>())]
   ];
 
@@ -24,7 +24,7 @@ public class LocativeCaseRuleTests
 
   public LocativeCaseRuleTests()
   {
-    _rule = RuleFactory.CreateSuffixRule(SuffixType.LocativeCase);
+    _rule = RuleFactory.CreateSuffixRule(SuffixType.LocativeCaseNoun);
   }
 
   [Theory, MemberData(nameof(BackVowelTestCases))]

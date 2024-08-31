@@ -10,13 +10,13 @@ public class AblativeCaseRuleTests
 {
   public static List<object[]> BackVowelTestCases =>
   [
-    [new RuleTestCase("okuldan", "okul", $"{SuffixType.AblativeCase}Rule")],
+    [new RuleTestCase("okuldan", "okul", $"{SuffixType.AblativeCaseNoun}Rule")],
     [new RuleTestCase("okulda", null, new List<string>())]
   ];
 
   public static List<object[]> FrontVowelTestCases =>
   [
-    [new RuleTestCase("kiliseden", "kilise", $"{SuffixType.AblativeCase}Rule")],
+    [new RuleTestCase("kiliseden", "kilise", $"{SuffixType.AblativeCaseNoun}Rule")],
     [new RuleTestCase("kilisede", null, new List<string>())]
   ];
 
@@ -24,7 +24,7 @@ public class AblativeCaseRuleTests
 
   public AblativeCaseRuleTests()
   {
-    _rule = RuleFactory.CreateSuffixRule(SuffixType.AblativeCase);
+    _rule = RuleFactory.CreateSuffixRule(SuffixType.AblativeCaseNoun);
   }
 
   [Theory, MemberData(nameof(BackVowelTestCases))]

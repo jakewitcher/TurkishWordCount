@@ -2,10 +2,13 @@ namespace TurkishWordCount.App.Enums;
 
 public enum SuffixType
 {
-  AblativeCase,
-  InstrumentalCase,
-  LocativeCase,
-  PastSimple,
+  AbilityVerb,
+  AblativeCaseNoun,
+  InfinitiveVerb,
+  InstrumentalCaseNoun,
+  LocativeCaseNoun,
+  MustVerb,
+  PastSimpleVerb,
   PluralNoun,
-  PresentContinuous
+  PresentContinuousVerb
 }

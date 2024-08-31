@@ -8,7 +8,7 @@ public static class RuleFactory
 {
   private readonly static Dictionary<SuffixType, Suffix> _suffixes = new()
   {
-    { SuffixType.PastSimple, new Suffix(SuffixType.PresentContinuous,
+    { SuffixType.PastSimpleVerb, new Suffix(SuffixType.PastSimpleVerb,
       [
         "medim", "medin", "medi", "medik", "mediniz", "mediler",
         "madım", "madın", "madı", "madık", "madınız", "madılar",
@@ -21,17 +21,20 @@ public static class RuleFactory
         "tım", "tın", "tı", "tık", "tınız", "tılar",
         "tum", "tun", "tu", "tuk", "tunuz", "tular"
       ]) },
-    { SuffixType.PresentContinuous, new Suffix(SuffixType.PresentContinuous,
+    { SuffixType.PresentContinuousVerb, new Suffix(SuffixType.PresentContinuousVerb,
       [
         "miyorum", "miyorsun", "miyor", "miyoruz", "miyorsunuz", "miyorlar",
         "mıyorum", "mıyorsun", "mıyor", "mıyoruz", "mıyorsunuz", "mıyorlar",
         "iyorum", "iyorsun", "iyor", "iyoruz", "iyorsunuz", "iyorlar",
         "ıyorum", "ıyorsun", "ıyor", "ıyoruz", "ıyorsunuz", "ıyorlar"
       ]) },
-    { SuffixType.AblativeCase, new Suffix(SuffixType.AblativeCase, ["dan", "den", "tan", "ten"]) },
-    { SuffixType.InstrumentalCase, new Suffix(SuffixType.InstrumentalCase, ["la", "le"]) },
-    { SuffixType.LocativeCase, new Suffix(SuffixType.LocativeCase, ["da", "de", "ta", "te"]) },
-    { SuffixType.PluralNoun, new Suffix(SuffixType.PluralNoun, ["lar", "ler", "ları", "leri", "ların", "lerin"]) }
+    { SuffixType.AbilityVerb, new Suffix(SuffixType.AbilityVerb, ["abil", "ebil"]) },
+    { SuffixType.MustVerb, new Suffix(SuffixType.MustVerb, ["malı", "meli"]) },
+    { SuffixType.AblativeCaseNoun, new Suffix(SuffixType.AblativeCaseNoun, ["dan", "den", "tan", "ten"]) },
+    { SuffixType.InstrumentalCaseNoun, new Suffix(SuffixType.InstrumentalCaseNoun, ["la", "le"]) },
+    { SuffixType.LocativeCaseNoun, new Suffix(SuffixType.LocativeCaseNoun, ["da", "de", "ta", "te"]) },
+    { SuffixType.PluralNoun, new Suffix(SuffixType.PluralNoun, ["lar", "ler", "ları", "leri", "ların", "lerin"]) },
+    { SuffixType.InfinitiveVerb, new Suffix(SuffixType.InfinitiveVerb, ["mak", "mek"]) }
   };
 
   public static List<IRule> CreateAll()

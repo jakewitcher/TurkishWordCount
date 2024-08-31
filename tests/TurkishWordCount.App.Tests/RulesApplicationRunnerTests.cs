@@ -26,9 +26,9 @@ public class RulesApplicationRunnerTests
     List<Word> expected =
     [
       new Word("insanlar", "insan", [$"{SuffixType.PluralNoun}Rule"]),
-      new Word("okulda", "okul", [$"{SuffixType.LocativeCase}Rule"]),
-      new Word("dağlarda", "dağ", [$"{SuffixType.LocativeCase}Rule", $"{SuffixType.PluralNoun}Rule"]),
-      new Word("evden", "ev", [$"{SuffixType.AblativeCase}Rule"]),
+      new Word("okulda", "okul", [$"{SuffixType.LocativeCaseNoun}Rule"]),
+      new Word("dağlarda", "dağ", [$"{SuffixType.LocativeCaseNoun}Rule", $"{SuffixType.PluralNoun}Rule"]),
+      new Word("evden", "ev", [$"{SuffixType.AblativeCaseNoun}Rule"]),
       new Word("evet", "evet", ["DefaultRule"])
     ];
 

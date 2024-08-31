@@ -10,13 +10,13 @@ public class InstrumentalCaseRuleTests
 {
   public static List<object[]> BackVowelTestCases =>
   [
-    [new RuleTestCase("arkadaşımla", "arkadaşım", $"{SuffixType.InstrumentalCase}Rule")],
+    [new RuleTestCase("arkadaşımla", "arkadaşım", $"{SuffixType.InstrumentalCaseNoun}Rule")],
     [new RuleTestCase("arkadaşımlar", null, new List<string>())]
   ];
 
   public static List<object[]> FrontVowelTestCases =>
   [
-    [new RuleTestCase("öğretmenle", "öğretmen", $"{SuffixType.InstrumentalCase}Rule")],
+    [new RuleTestCase("öğretmenle", "öğretmen", $"{SuffixType.InstrumentalCaseNoun}Rule")],
     [new RuleTestCase("öğretmenler", null, new List<string>())]
   ];
 
@@ -24,7 +24,7 @@ public class InstrumentalCaseRuleTests
 
   public InstrumentalCaseRuleTests()
   {
-    _rule = RuleFactory.CreateSuffixRule(SuffixType.InstrumentalCase);
+    _rule = RuleFactory.CreateSuffixRule(SuffixType.InstrumentalCaseNoun);
   }
 
   [Theory, MemberData(nameof(BackVowelTestCases))]
