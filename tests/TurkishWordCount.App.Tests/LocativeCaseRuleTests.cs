@@ -2,11 +2,24 @@ using TurkishWordCount.App.Enums;
 using TurkishWordCount.App.Models;
 using TurkishWordCount.App.Rules;
 using TurkishWordCount.App.Rules.Interfaces;
+using TurkishWordCount.App.Tests.Models;
 
 namespace TurkishWordCount.App.Tests;
 
 public class LocativeCaseRuleTests
 {
+  public static List<object[]> BackVowelTestCases =>
+[
+  [new RuleTestCase("okulda", "okul", $"{SuffixType.LocativeCase}Rule")],
+    [new RuleTestCase("okuldan", null, new List<string>())]
+];
+
+  public static List<object[]> FrontVowelTestCases =>
+  [
+    [new RuleTestCase("kilisede", "kilise", $"{SuffixType.LocativeCase}Rule")],
+    [new RuleTestCase("kiliseden", null, new List<string>())]
+  ];
+
   private readonly IRule _rule;
 
   public LocativeCaseRuleTests()
@@ -14,28 +27,27 @@ public class LocativeCaseRuleTests
     _rule = RuleFactory.CreateSuffixRule(SuffixType.LocativeCase);
   }
 
-  [Fact]
-  public void Apply_RuleIsMatched_RootIsModified()
+  [Theory, MemberData(nameof(BackVowelTestCases))]
+  public void Apply_BackVowelSuffix(RuleTestCase testCase)
   {
-    var before = new Word("okulda");
+    var before = new Word(testCase.Original);
 
     var after = _rule.Apply(before);
 
     Assert.Equal(before.Original, after.Original);
-    Assert.Equal("okul", after.Root);
-    Assert.Single(after.RulesApplied);
-    Assert.Equal($"{SuffixType.LocativeCase}Rule", after.RulesApplied[0]);
+    Assert.Equal(testCase.Root, after.Root);
+    Assert.Equal(testCase.RulesApplied, after.RulesApplied);
   }
 
-  [Fact]
-  public void Apply_RulesIsNotMatched_RootIsNotModified()
+  [Theory, MemberData(nameof(FrontVowelTestCases))]
+  public void Apply_FrontVowelSuffix(RuleTestCase testCase)
   {
-    var before = new Word("okuldan");
+    var before = new Word(testCase.Original);
 
     var after = _rule.Apply(before);
 
     Assert.Equal(before.Original, after.Original);
-    Assert.Null(after.Root);
-    Assert.Empty(after.RulesApplied);
+    Assert.Equal(testCase.Root, after.Root);
+    Assert.Equal(testCase.RulesApplied, after.RulesApplied);
   }
 }
