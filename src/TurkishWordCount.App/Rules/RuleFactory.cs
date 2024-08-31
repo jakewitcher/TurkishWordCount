@@ -8,10 +8,17 @@ public static class RuleFactory
 {
   private readonly static Dictionary<SuffixType, Suffix> _suffixes = new()
   {
-    { SuffixType.AblativeCase, new Suffix(SuffixType.AblativeCase, ["dan", "den"])},
-    { SuffixType.InstrumentalCase, new Suffix(SuffixType.InstrumentalCase, ["la", "le"])},
-    { SuffixType.LocativeCase, new Suffix(SuffixType.LocativeCase, ["da", "de"])},
-    { SuffixType.PluralNoun, new Suffix(SuffixType.PluralNoun, ["lar", "ler", "ları", "leri", "ların", "lerin"])}
+    { SuffixType.PresentContinuous, new Suffix(SuffixType.PresentContinuous,
+      [
+        "miyorum", "miyorsun", "miyor", "miyoruz", "miyorsunuz", "miyorlar",
+        "mıyorum", "mıyorsun", "mıyor", "mıyoruz", "mıyorsunuz", "mıyorlar",
+        "iyorum", "iyorsun", "iyor", "iyoruz", "iyorsunuz", "iyorlar",
+        "ıyorum", "ıyorsun", "ıyor", "ıyoruz", "ıyorsunuz", "ıyorlar"
+      ]) },
+    { SuffixType.AblativeCase, new Suffix(SuffixType.AblativeCase, ["dan", "den"]) },
+    { SuffixType.InstrumentalCase, new Suffix(SuffixType.InstrumentalCase, ["la", "le"]) },
+    { SuffixType.LocativeCase, new Suffix(SuffixType.LocativeCase, ["da", "de"]) },
+    { SuffixType.PluralNoun, new Suffix(SuffixType.PluralNoun, ["lar", "ler", "ları", "leri", "ların", "lerin"]) }
   };
 
   public static List<IRule> CreateAll()
